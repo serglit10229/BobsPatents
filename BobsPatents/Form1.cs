@@ -22,7 +22,7 @@ namespace BobsPatents
 
 
         public MySqlConnection con = new MySqlConnection("SERVER=db4free.net;PORT=3307;DATABASE=bobspatents;UID=serglit1650;PWD=serglit102;");
-
+        Form2 form = new Form2();
         
 
 
@@ -65,6 +65,16 @@ namespace BobsPatents
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sps = new MySqlDataAdapter("SELECT * FROM `Patents` WHERE 1", con);
+            DataTable dataTable = new DataTable();
+            sps.Fill(dataTable);
+            form.dataGridView1.DataSource = dataTable;
+
+            form.Show();
         }
     }
 }
